@@ -10,7 +10,7 @@ package org.semper.reformanda.hackerrank.bidding
 class BidGameState(val bidderAdvantage: Int, val bottlePosition: Int) {
 
   def placeBids(bid1: Int, bid2: Int) : BidGameState = {
-    val bottleMover: (Int) => Int = {
+    val moveBottle: (Int) => Int = {
 
       if (bid1 == bid2)
         if (bidderAdvantage == 1) (x: Int) => x - 1 else (x: Int) => x + 1
@@ -20,7 +20,7 @@ class BidGameState(val bidderAdvantage: Int, val bottlePosition: Int) {
         (x: Int) => x + 1
     }
 
-    new BidGameState(swapAdvantage(bidderAdvantage), bottleMover(bottlePosition))
+    new BidGameState(swapAdvantage(bidderAdvantage), moveBottle(bottlePosition))
   }
 
   def swapAdvantage(bidderAdvantage: Int): Int = if(bidderAdvantage == 1) 2 else 1;
